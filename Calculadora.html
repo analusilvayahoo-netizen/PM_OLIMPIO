@@ -1,0 +1,57 @@
+<html><!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora</title>
+</head>
+<body bgcolor="#F8F8FF">
+    
+    <center>
+      <hr>
+      <h1>CALCULADORA DE MÉDIA ESCOLAR</h1>
+        <hr>
+        <br>
+        <p>NOTA 1</p>
+        <input type="number" id="num1">
+        <br><br>
+        <p>NOTA 2</p>
+        <input type="number" id="num2">
+        <br><br>
+        <button id="btnCalcular">Nota Final</button> 
+        <br><br>
+        <p id="resultado"></p>
+    </center>
+
+    <script>
+        document.getElementById('btnCalcular').addEventListener('click', function () {
+            const v1 = document.getElementById("num1").value;
+            const v2 = document.getElementById("num2").value;
+            const resultElement = document.getElementById("resultado");
+
+            if (v1 === '' || v2 === '') {
+                resultElement.innerText = "Todas as notas precisam estar preenchidas!";
+                resultElement.style.color = "red";
+                return;
+            }
+
+            const n1 = parseFloat(v1);
+            const n2 = parseFloat(v2);
+            if (n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10) {
+                resultElement.innerText = "As notas devem estar entre 0 e 10.";
+                resultElement.style.color = "red";
+                return;
+            }
+
+            const media = (n1 + n2) / 2;
+            resultElement.style.color = "black";
+            resultElement.innerText = "A média final é: " + media.toFixed(1);
+            
+            if(media >= 6) {
+                resultElement.innerText += " - Aprovado! ";
+                resultElement.style.color = "green"
+            } else {
+                resultElement.innerText += " - Recuperação. ";
+            }
+        });
+    </script>
+</body>
+</html>
