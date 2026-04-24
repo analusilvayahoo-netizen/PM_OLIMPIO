@@ -11,9 +11,63 @@
 
 <center>
 
+<div>
+    <h1> Carrinho Style CasualChic </h1>
+
+    <table>
+        <tr>
+            <th> produto </th>
+            <th> preço </th>
+        </tr>
+        <tbody id="list"></tbody>
+    </table>
+
+    <p> total: <span id="total"> R$ 0 </span></p>
+
+    <button onclick="finalizar()"> finalizar a  compra </button>
+</div>
 
 
+<script>
 
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+function mostrarCarrinho() {
+    let lista = document.getElementById("list");
+    let total = 0;
+
+    lista.innerHTML = "";
+
+    for (let i = 0; i < carrinho.length; i++) {
+        total += carrinho[i].preco;
+
+        list.innerHTML += `
+            <tr>
+                <td>${carrinho[i].nome}</td>
+                <td>R$ ${carrinho[i].preco}</td>
+                <td><button onclick="remover(${i})">X</button></td>
+            </tr>
+        `;
+    }
+
+        document.getElementById("total").innerText = "R$ " + total;
+}
+
+function remover(i) {
+    carrinho.splice(i, 1);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    mostrarCarrinho();
+}
+
+function finalizar() {
+    alert("Sua compra foi finalizada!");
+    localStorage.removeItem("carrinho");
+    mostrarCarrinho();
+}
+
+mostrarCarrinho();
+
+</script>
 
 
 </center>
