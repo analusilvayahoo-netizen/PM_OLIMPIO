@@ -11,22 +11,76 @@
 
 <center>
 
+<p><h2><b><font color="#000000"> Conjunto feminino na cor vinho, com design contemporâneo que une praticidade e elegância em uma única proposta. </font color></p></h2><b>
+
+<br>
+
+	<img src="https://uploads.metropoles.com/wp-content/uploads/2023/01/19133315/BBBB-23001-1.jpg"<br
+style="width: 400px; height: auto; border radius;">
+
+<br>
+  <br>
+    <br>
 
 <br>	
 
-<p><font color="#000000">  </font color></p>
-<p><font color="#000000">   </font color></p>
+<p><font color="#000000"> Composto por duas peças coordenadas, o conjunto valoriza a silhueta com caimento leve e estruturado. </font color></p>
+<p><font color="#000000"> O tecido pode variar entre malha premium, tricô ou alfaiataria leve, garantindo conforto sem perder o toque sofisticado. </font color></p>
 
 <br>
 
-<p><font color="#000000">  </font color></p>
-<p><font color="#000000">  </font color></p>
+<p><font color="#000000"> A modelagem costuma ser versátil, permitindo uso tanto em ocasiões casuais quanto em produções mais arrumadas. </font color></p>
+<p><font color="#000000"> O resultado é uma produção sofisticada sem esforço — moderna, feminina e com presença marcante, perfeita para quem gosta de se vestir bem sem exagero. </font color></p>
 	
 <br>
 
+<br>
+  <br>
+    <br>
 
+
+ <button onclick="adicionarAoCarrinho('Conjunto Vinho Moda Casual Chic', 180,00, '')" class="btn-compra">
+        🛒 ADICIONAR AO CARRINHO
+    </button>
+
+
+<script>
+    function adicionarAoCarrinho(nome, preco, imagem) {
+        let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+       
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            imagem: imagem
+        });
+       
+        localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+       
+        window.location.href = 'Carrinho.html';
+    }
+
+    function mostrarCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    let div = document.getElementById('carrinho');
+
+    div.innerHTML = '';
+
+    carrinho.forEach(produto => {
+        div.innerHTML += `
+            <div>
+                <img src="${produto.imagem}" width="100">
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${produto.preco}</p>
+            </div>
+        `;
+    });
+}
+
+mostrarCarrinho();
+</script>
 
 </center>
+
 
 </body>
 </html>

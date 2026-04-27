@@ -1,65 +1,99 @@
 <html>
 <head>
-<title>
-   💇‍♀️ Style CasualChic
-</title>
+<title>💇‍♀️ Style CasualChic</title>
 </head>
-<body bgcolor="#F8F8FF">
-<hr>
 
-<br>
+<body bgcolor="#F8F8FF">
+
+<hr>
 
 <center>
 
+<br>
 
-<br>	
-
-
-<p><h2><b><font color="#000000"> É um vestido que combina romantismo e vivacidade, ideal para ocasiões ao ar livre ou momentos em que se quer transmitir leveza e estilo. </font color></p></h2><b>
-<p><font color="#000000">   </font color></p>
+<p>
+<b>
+<h2>    
+<font color="#000000">
+É um vestido que combina romantismo e vivacidade, ideal para ocasiões ao ar livre ou momentos em que se quer transmitir leveza e estilo.
+</font>
+</h2>
+</b>
+</p>
 
 <br>
 
-	<img src="https://img.dhost.cloud/vjHAKA-rFInhHlpNzqdSITXfclQ=/770x480/smart/https://tdan.nyc3.digitaloceanspaces.com/images/aa277/3528715679b526a00fff3c7afb9a0abe215.png?name=maxiane.png"<br
-style="width: 600px; height: auto; border radius;">
+<img src="https://img.dhost.cloud/vjHAKA-rFInhHlpNzqdSITXfclQ=/770x480/smart/https://tdan.nyc3.digitaloceanspaces.com/images/aa277/3528715679b526a00fff3c7afb9a0abe215.png?name=maxiane.png"
+width="600">
 
-<br>
-  <br>
-    <br>
+<br><br><br>
 
-<p><b><font color="#000000"> Um vestido em tom amarelo pastel, suave e luminoso, transmite leveza e delicadeza logo à primeira vista. </font color><b></p>
-<p><b><font color="#000000"> O tecido, fluido e arejado, cai com elegância sobre o corpo, acompanhando os movimentos com naturalidade. </font color><b></p>
-<p><b><font color="#000000"> Espalhadas pela peça, flores grandes em um vibrante tom de laranja criam um contraste harmonioso, trazendo energia e um toque artístico ao visual. </font color><b></p>
+<p>
+<b><font color="#000000">
+Um vestido em tom amarelo pastel, suave e luminoso, transmite leveza e delicadeza logo à primeira vista.
+</font></b>
+</p>
 
-	
-<br>
-  <br>
-    <br>
+<p>
+<b><font color="#000000">
+O tecido, fluido e arejado, cai com elegância sobre o corpo, acompanhando os movimentos com naturalidade.
+</font></b>
+</p>
 
+<p>
+<b><font color="#000000">
+Espalhadas pela peça, flores grandes em um vibrante tom de laranja criam um contraste harmonioso, trazendo energia e um toque artístico ao visual.
+</font></b>
+</p>
 
- <button onclick="adicionarAoCarrinho('Vestido Amarelo com Estampa de Flor Casual Chic', 120,00, 'https://img.dhost.cloud/vjHAKA-rFInhHlpNzqdSITXfclQ=/770x480/smart/https://tdan.nyc3.digitaloceanspaces.com/images/aa277/3528715679b526a00fff3c7afb9a0abe215.png?name=maxiane.png')" class="btn-compra">
-        🛒 ADICIONAR AO CARRINHO
-    </button>
+<br><br><br>
 
-
-<script>
-    function adicionarAoCarrinho(nome, preco, imagem) {
-        let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
-       
-        carrinho.push({
-            nome: nome,
-            preco: preco,
-            imagem: imagem
-        });
-       
-        localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
-       
-        window.location.href = 'Carrinho.html';
-    }
-</script>
-
+<button onclick="adicionarAoCarrinho(
+'Vestido Amarelo com Estampa de Flor Casual Chic',
+120.00,
+'https://img.dhost.cloud/vjHAKA-rFInhHlpNzqdSITXfclQ=/770x480/smart/https://tdan.nyc3.digitaloceanspaces.com/images/aa277/3528715679b526a00fff3c7afb9a0abe215.png?name=maxiane.png'
+)">
+🛒 ADICIONAR AO CARRINHO
+</button>
 
 </center>
 
+<script>
+function adicionarAoCarrinho(nome, preco, imagem) {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+
+    carrinho.push({
+        nome: nome,
+        preco: preco,
+        imagem: imagem
+    });
+
+    localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+
+    window.location.href = 'Carrinho.html';
+}
+
+function mostrarCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    let div = document.getElementById('carrinho');
+
+    if (!div) return;
+
+    div.innerHTML = '';
+
+    carrinho.forEach(produto => {
+        div.innerHTML += `
+            <div>
+                <img src="${produto.imagem}" width="100">
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${produto.preco}</p>
+            </div>
+        `;
+    });
+}
+
+mostrarCarrinho();
+</script>
+
 </body>
-</html> 
+</html>

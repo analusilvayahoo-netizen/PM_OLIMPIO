@@ -4,7 +4,9 @@
    💇‍♀️ Style CasualChic
 </title>
 </head>
+
 <body bgcolor="#F8F8FF">
+
 <hr>
 
 <br>
@@ -12,25 +14,36 @@
 <center>
 
 <div>
-    <h1> Carrinho Style CasualChic </h1>
+    <font color="#D2B48C">
+    <h1> Carrinho de Compras Chic </h1>
+    </font>
+
+	<img src="MEULOGO.JPG"<br
+style="width: 600px; height: auto; border radius;">
+	
+<br>
+
 
     <table>
         <tr>
             <th> produto </th>
             <th> preço </th>
+            <th> ação </th>
         </tr>
+
         <tbody id="list"></tbody>
     </table>
 
-    <p> total: <span id="total"> R$ 0 </span></p>
+    <p> total: <span id="total"> R$ 0.00 </span></p>
 
-    <button onclick="finalizar()"> finalizar a  compra </button>
+    <button onclick="finalizar()"> finalizar a compra </button>
 </div>
 
+</center>
 
 <script>
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+let carrinho = JSON.parse(localStorage.getItem("meuCarrinho")) || [];
 
 function mostrarCarrinho() {
     let lista = document.getElementById("list");
@@ -41,36 +54,34 @@ function mostrarCarrinho() {
     for (let i = 0; i < carrinho.length; i++) {
         total += carrinho[i].preco;
 
-        list.innerHTML += `
+        lista.innerHTML += `
             <tr>
                 <td>${carrinho[i].nome}</td>
-                <td>R$ ${carrinho[i].preco}</td>
+                <td>R$ ${carrinho[i].preco.toFixed(2)}</td>
                 <td><button onclick="remover(${i})">X</button></td>
             </tr>
         `;
     }
 
-        document.getElementById("total").innerText = "R$ " + total;
+    document.getElementById("total").innerText = "R$ " + total.toFixed(2);
 }
 
 function remover(i) {
     carrinho.splice(i, 1);
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    localStorage.setItem("meuCarrinho", JSON.stringify(carrinho));
     mostrarCarrinho();
 }
 
 function finalizar() {
     alert("Sua compra foi finalizada!");
-    localStorage.removeItem("carrinho");
+    localStorage.removeItem("meuCarrinho");
+    carrinho = [];
     mostrarCarrinho();
 }
 
 mostrarCarrinho();
 
 </script>
-
-
-</center>
 
 </body>
 </html>
