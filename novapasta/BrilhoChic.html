@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>
+   💇‍♀️ Style CasualChic
+</title>
+</head>
+<body bgcolor="#F8F8FF">
+<hr>
+
+<br>
+
+<center>
+
+<p><h2><b><font color="#000000"> </font color></p></h2><b>
+
+<br>
+
+	<img src="https://tse3.mm.bing.net/th/id/OIP.ii-Ff-as4wrX7atJHGLUdwHaNK?rs=1&pid=ImgDetMain&o=7&rm=3"<br
+style="width: 300px; height: auto; border radius;">
+
+<br>
+  <br>
+    <br>
+
+<br>	
+
+<p><font color="#000000">  </font color></p>
+<p><font color="#000000">  </font color></p>
+
+<br>
+
+<p><font color="#000000">  </font color></p>
+<p><font color="#000000">  </font color></p>
+	
+<br>
+
+<br>
+  <br>
+    <br>
+
+
+ <button onclick="adicionarAoCarrinho('Vestido Preto Brilhante Chic', 150,00, '')" class="btn-compra">
+        🛒 ADICIONAR AO CARRINHO
+    </button>
+
+
+<script>
+    function adicionarAoCarrinho(nome, preco, imagem) {
+        let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+       
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            imagem: imagem
+        });
+       
+        localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+       
+        window.location.href = 'Carrinho.html';
+    }
+
+    function mostrarCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    let div = document.getElementById('carrinho');
+
+    div.innerHTML = '';
+
+    carrinho.forEach(produto => {
+        div.innerHTML += `
+            <div>
+                <img src="${produto.imagem}" width="100">
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${produto.preco}</p>
+            </div>
+        `;
+    });
+}
+
+mostrarCarrinho();
+</script>
+
+</center>
+
+
+</body>
+</html>
