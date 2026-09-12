@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>
+   💇‍♀️ Style CasualChic
+</title>
+</head>
+<body bgcolor="#F8F8FF">
+<hr>
+
+<br>
+
+<center>
+
+<p><h2><b><font color="#000000"> A leveza do branco em uma silhueta que celebra o movimento. </font color></p></h2><b>
+
+<br>
+
+	<img src="https://quadrofeminino.com/wp-content/uploads/2024/09/look-branco-com-dourado-139x300.jpg"<br
+style="width: 200px; height: auto; border radius;">
+
+<br>
+  <br>
+    <br>
+
+<br>	
+
+<p><font color="#000000"> Este vestido curto apresenta um design de ombro só, com uma manga ampla e fluida que cria um efeito etéreo. </font color></p>
+<p><font color="#000000"> O corte soltinho garante conforto sem perder a sofisticação, tornando-o a escolha perfeita para um almoço elegante ou um evento à beira-mar. Minimalismo puro com um toque de poesia. </font color></p>
+
+<br>
+
+<br>
+
+<br>
+  <br>
+    <br>
+
+
+ <button onclick="adicionarAoCarrinho('Vestido Ano Novo White', 120,00, '')" class="btn-compra">
+        🛒 ADICIONAR AO CARRINHO
+    </button>
+
+
+<script>
+    function adicionarAoCarrinho(nome, preco, imagem) {
+        let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+       
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            imagem: imagem
+        });
+       
+        localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+       
+        window.location.href = 'Carrinho.html';
+    }
+
+    function mostrarCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    let div = document.getElementById('carrinho');
+
+    div.innerHTML = '';
+
+    carrinho.forEach(produto => {
+        div.innerHTML += `
+            <div>
+                <img src="${produto.imagem}" width="100">
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${produto.preco}</p>
+            </div>
+        `;
+    });
+}
+
+mostrarCarrinho();
+</script>
+
+</center>
+
+
+</body>
+</html>

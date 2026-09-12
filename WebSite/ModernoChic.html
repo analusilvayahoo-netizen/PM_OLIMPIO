@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>
+   💇‍♀️ Style CasualChic
+</title>
+</head>
+<body bgcolor="#F8F8FF">
+<hr>
+
+<br>
+
+<center>
+
+<p><h2><b><font color="#000000"> Vestido feminino com design moderno e sofisticado, ideal para composições casuais com toque refinado. </font color></p></h2><b>
+
+<br>
+
+	<img src="https://static1.purepeople.com.br/articles/3/37/05/83/@/4249883--bbb-20-tambem-mostrou-a-forca-de-julie-580x0-2.jpg"<br
+style="width: 400px; height: auto; border radius;">
+
+<br>
+  <br>
+    <br>
+<br>	
+
+<p><font color="#000000"> Sua modelagem valoriza a silhueta de forma natural, podendo variar entre corte ajustado ou levemente solto, garantindo conforto e caimento impecável. </font color></p>
+<p><font color="#000000">  O tecido leve e de boa fluidez proporciona movimento elegante, enquanto os detalhes minimalistas — como decote sutil, mangas delicadas ou recortes estratégicos — reforçam o estilo casual chic contemporâneo. </font color></p>
+
+<br>
+	
+  <br>
+    <br>
+
+
+ <button onclick="adicionarAoCarrinho('Vestido Moderno Casual Chic', 115,00, '')" class="btn-compra">
+        🛒 ADICIONAR AO CARRINHO
+    </button>
+
+
+<script>
+    function adicionarAoCarrinho(nome, preco, imagem) {
+        let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+       
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            imagem: imagem
+        });
+       
+        localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+       
+        window.location.href = 'Carrinho.html';
+    }
+
+    function mostrarCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    let div = document.getElementById('carrinho');
+
+    div.innerHTML = '';
+
+    carrinho.forEach(produto => {
+        div.innerHTML += `
+            <div>
+                <img src="${produto.imagem}" width="100">
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${produto.preco}</p>
+            </div>
+        `;
+    });
+}
+
+mostrarCarrinho();
+</script>
+
+</center>
+
+
+</body>
+</html>

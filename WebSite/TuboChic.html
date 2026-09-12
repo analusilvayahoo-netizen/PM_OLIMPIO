@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>
+   💇‍♀️ Style CasualChic
+</title>
+</head>
+<body bgcolor="#F8F8FF">
+<hr>
+
+<br>
+
+<center>
+
+<p><h2><b><font color="#000000"> Vestido tubinho curto com manga longa, de estilo elegante e ajustado ao corpo. </font color></p></h2><b>
+
+<br>
+
+	<img src="https://tse2.mm.bing.net/th/id/OIP.S7NS0YQiyhZqn1i1wo1GmAHaJQ?w=1440&h=1800&rs=1&pid=ImgDetMain&o=7&rm=3"<br
+style="width: 400px; height: auto; border radius;">
+
+<br>
+  <br>
+    <br>
+<br>	
+
+<p><font color="#000000"> A peça tem modelagem justa, típica do corte tubinho, valorizando a silhueta de forma sofisticada e feminina. </font color></p>
+<p><font color="#000000"> O comprimento é curto, acima dos joelhos, trazendo um toque moderno e sensual na medida certa. </font color></p>
+<p><font color="#000000"> As mangas longas equilibram o visual, adicionando elegância e tornando o vestido ideal para diferentes ocasiões. </font color></p>
+<p><font color="#000000"> O caimento é estruturado e limpo, com acabamento que reforça um estilo chic e versátil. </font color></p>
+<p><font color="#000000"> É uma peça perfeita para eventos noturnos, festas ou produções mais arrumadas, combinando simplicidade com impacto visual. </font color></p>
+
+<br>
+	
+  <br>
+    <br>
+
+
+ <button onclick="adicionarAoCarrinho('Vestido Tubo Estilo Casual Chic', 110,00, '')" class="btn-compra">
+        🛒 ADICIONAR AO CARRINHO
+    </button>
+
+
+<script>
+    function adicionarAoCarrinho(nome, preco, imagem) {
+        let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+       
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            imagem: imagem
+        });
+       
+        localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+       
+        window.location.href = 'Carrinho.html';
+    }
+
+    function mostrarCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    let div = document.getElementById('carrinho');
+
+    div.innerHTML = '';
+
+    carrinho.forEach(produto => {
+        div.innerHTML += `
+            <div>
+                <img src="${produto.imagem}" width="100">
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${produto.preco}</p>
+            </div>
+        `;
+    });
+}
+
+mostrarCarrinho();
+</script>
+
+</center>
+
+
+</body>
+</html>
