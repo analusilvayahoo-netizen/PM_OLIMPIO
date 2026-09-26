@@ -54,3 +54,7 @@ cd app-scholar
 Instale as dependências:
 npm install
 Execute o projeto utilizando o ambiente configurado para React Native/Expo.
+
+O projeto é desenvolvido de forma incremental, utilizando o Git para registrar as alterações realizadas durante o desenvolvimento.
+
+Os commits são utilizados para identificar as principais etapas de evolução do sistema, como criação de telas, implementação da API, conexão com o banco de dados, correções e atualizações.
