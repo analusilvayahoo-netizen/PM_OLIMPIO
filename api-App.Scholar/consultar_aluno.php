@@ -1,13 +1,20 @@
 <?php
-
 require_once "cors.php";
 require_once "conexao.php";
 
-$sql = "SELECT id, nome, status FROM alunos WHERE status = 'A' ORDER BY nome";
-$stmt = $pdo->query($sql);
-$alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+    $sql = "SELECT * FROM alunos WHERE status = 'A' ORDER BY nome";
+    $stmt = $pdo->query($sql);
+    $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($alunos);
-echo json_encode(["sucesso" => true, "mensagem" => "Consulta realizada com sucesso."]);
-
+    echo json_encode([
+        "success" => true,
+        "alunos" => $alunos
+    ]);
+} catch (PDOException $e) {
+    echo json_encode([
+        "success" => false,
+        "mensagem" => "Erro ao consultar: " . $e->getMessage()
+    ]);
+}
 ?>
