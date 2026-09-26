@@ -1,0 +1,56 @@
+Sobre o projeto
+
+O App Scholar é uma aplicação desenvolvida para auxiliar no gerenciamento de informações acadêmicas de uma instituição de ensino.
+
+O sistema permite organizar e consultar diferentes informações relacionadas ao ambiente escolar, como alunos, professores, cursos, disciplinas, turmas, matrículas, responsáveis, avaliações, coordenadores e boletins.
+
+O projeto foi desenvolvido com o objetivo de centralizar informações acadêmicas em uma aplicação organizada e de fácil utilização.
+
+Funcionalidades
+Cadastro de alunos
+Consulta de alunos
+Edição de informações dos alunos
+Exclusão de alunos
+Cadastro e consulta de professores
+Cadastro e consulta de cursos
+Cadastro e consulta de disciplinas
+Cadastro e consulta de turmas
+Gerenciamento de matrículas
+Consulta de responsáveis
+Consulta de avaliações
+Consulta de coordenadores
+Consulta de boletins
+Navegação entre as principais telas do sistema
+Integração com banco de dados por meio de API
+Tecnologias utilizadas
+React Native
+JavaScript
+PHP
+MySQL
+Git
+GitHub
+Estrutura do projeto
+
+O projeto é organizado de acordo com suas principais responsabilidades.
+
+app-scholar/
+├── assets/
+├── components/
+├── screens/
+├── api/
+├── banco/
+├── App.js
+├── Cores.js
+└── README.md
+
+A estrutura pode ser adaptada conforme o desenvolvimento do projeto e os arquivos utilizados.
+
+Como executar
+Aplicação
+Clone o repositório:
+git clone URL_DO_REPOSITORIO
+Acesse a pasta do projeto:
+cd app-scholar
+Instale as dependências:
+npm install
+Execute o projeto utilizando o ambiente configurado para React Native/Expo.
