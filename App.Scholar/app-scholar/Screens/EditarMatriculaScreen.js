@@ -1,0 +1,212 @@
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+  Alert,
+} from 'react-native';
+import { CORES } from './Cores';
+
+export default function EditarMatriculaScreen({
+  navegar,
+  matricula,
+  alunos = [],
+  cursos = [],
+  atualizarMatricula,
+}) {
+  const [alunoSelecionado, setAlunoSelecionado] = useState(
+    alunos.find((a) => a.nome === matricula?.aluno) || null
+  );
+
+  const [cursoSelecionado, setCursoSelecionado] = useState(
+    cursos.find((c) => c.nome === matricula?.curso) || null
+  );
+
+  const [ano, setAno] = useState(matricula?.ano || '2026');
+
+  function salvar() {
+    if (!alunoSelecionado || !cursoSelecionado || !ano.trim()) {
+      Alert.alert('Atenção', 'Preencha todos os campos.');
+      return;
+    }
+
+    const atualizada = {
+      ...matricula,
+      aluno: alunoSelecionado.nome,
+      alunoId: alunoSelecionado.id,
+      curso: cursoSelecionado.nome,
+      cursoId: cursoSelecionado.id,
+      ano,
+    };
+
+    if (atualizarMatricula) {
+      atualizarMatricula(atualizada);
+    }
+
+    Alert.alert('Sucesso', 'Matrícula atualizada!');
+    navegar('consultaMatriculas');
+  }
+
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.titulo}>Editar Matrícula</Text>
+
+        <Text style={styles.label}>Aluno</Text>
+
+        {alunos.map((aluno) => (
+          <TouchableOpacity
+            key={aluno.id}
+            style={[
+              styles.opcao,
+              alunoSelecionado?.id === aluno.id && styles.selecionado,
+            ]}
+            onPress={() => setAlunoSelecionado(aluno)}
+          >
+            <Text
+              style={[
+                styles.textoOpcao,
+                alunoSelecionado?.id === aluno.id &&
+                  styles.textoSelecionado,
+              ]}
+            >
+              {aluno.nome}
+            </Text>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={styles.label}>Curso</Text>
+
+        {cursos.map((curso) => (
+          <TouchableOpacity
+            key={curso.id}
+            style={[
+              styles.opcao,
+              cursoSelecionado?.id === curso.id && styles.selecionado,
+            ]}
+            onPress={() => setCursoSelecionado(curso)}
+          >
+            <Text
+              style={[
+                styles.textoOpcao,
+                cursoSelecionado?.id === curso.id &&
+                  styles.textoSelecionado,
+              ]}
+            >
+              {curso.nome}
+            </Text>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={styles.label}>Ano</Text>
+
+        <TextInput
+          style={styles.input}
+          value={ano}
+          onChangeText={setAno}
+          keyboardType="numeric"
+        />
+
+        <TouchableOpacity style={styles.botao} onPress={salvar}>
+          <Text style={styles.textoBotao}>SALVAR</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.botaoCancelar}
+          onPress={() => navegar('consultaMatriculas')}
+        >
+          <Text style={styles.textoCancelar}>CANCELAR</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: CORES.fundo,
+    padding: 20,
+  },
+
+  card: {
+    backgroundColor: CORES.branco,
+    padding: 20,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: CORES.borda,
+  },
+
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: CORES.verde,
+    textAlign: 'center',
+    marginBottom: 25,
+  },
+
+  label: {
+    fontWeight: 'bold',
+    color: CORES.verde,
+    marginTop: 10,
+    marginBottom: 8,
+  },
+
+  opcao: {
+    borderWidth: 1,
+    borderColor: CORES.borda,
+    borderRadius: 10,
+    padding: 14,
+    marginBottom: 8,
+  },
+
+  selecionado: {
+    backgroundColor: CORES.verde,
+  },
+
+  textoOpcao: {
+    color: CORES.verde,
+    fontWeight: '600',
+  },
+
+  textoSelecionado: {
+    color: CORES.branco,
+  },
+
+  input: {
+    borderWidth: 1,
+    borderColor: CORES.borda,
+    borderRadius: 10,
+    padding: 14,
+  },
+
+  botao: {
+    backgroundColor: CORES.verde,
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+
+  textoBotao: {
+    color: CORES.branco,
+    fontWeight: 'bold',
+  },
+
+  botaoCancelar: {
+    borderWidth: 1,
+    borderColor: CORES.verde,
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+
+  textoCancelar: {
+    color: CORES.verde,
+    fontWeight: 'bold',
+  },
+});

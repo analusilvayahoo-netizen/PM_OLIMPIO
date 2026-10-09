@@ -1,0 +1,1 @@
+export const API_URL = "https://overfeed-distort-shopping.ngrok-free.dev/api-App.Scholar";
